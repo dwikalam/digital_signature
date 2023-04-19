@@ -39,7 +39,6 @@ def interface():
                 with open(filename + ".txt", "r") as source:
                     file_content = source.read()
                     signature = Ecdsa.sign(file_content, privateKey, hashfunc=sha3_256)
-                    print(Ecdsa.verify(file_content, signature, publicKey, sha3_256))
                     with open(filename + "_signed.txt", "w") as dest:
                         dest.write(file_content + f"\n<ds>{signature.toBase64()}</ds>")
 
